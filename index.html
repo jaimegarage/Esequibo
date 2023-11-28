@@ -2,23 +2,81 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Referendo Consultivo 2023 - Pregunta 1</title>
+  <title>Referendo Consultivo 2023</title>
   <link rel="stylesheet" href="styles.css"> <!-- Enlaza tu archivo CSS -->
 </head>
 <body>
   <header>
     <h1>REFERENDO CONSULTIVO 2023</h1>
-    <h2>Pregunta 1</h2>
   </header>
   <main>
-    <h3>¿Está usted de acuerdo en rechazar por todos los medios, conforme al Derecho, la línea impuesta fraudulentamente por el Laudo Arbitral de París de 1899, que pretende despojarnos de nuestra Guayana Esequiba?</h3>
-    <div class="botones">
-      <button onclick="respuesta('si')">Sí</button>
-      <button onclick="respuesta('no')">No</button>
+    <div class="bienvenida">
+      <h2>Esto es una simulación de lo que mostrará la máquina de votación el 3 de diciembre</h2>
+      <button onclick="iniciarVotacion()" class="comenzar">Comenzar</button>
+    </div>
+  
+    <div class="pregunta" style="display: none;">
+      <div class="caja-gris">
+        <h2 id="preguntaTitulo" class="pregunta-titulo">Pregunta 1</h2>
+        <h3 id="preguntaTexto" class="pregunta-texto">...</h3>
+        <div class="botones">
+          <button onclick="guardarRespuesta('si')" class="si">SI</button>
+          <button onclick="guardarRespuesta('no')" class="no">NO</button>
+        </div>
+      </div>
     </div>
   </main>
-  <footer>
-    <p>© 2023 TuSitioWeb.com</p>
-  </footer>
+  
+  <script>
+    var respuestas = []; // Array para almacenar las respuestas
+
+    var preguntas = [
+      "¿Está usted de acuerdo en rechazar por todos los medios, conforme al Derecho, la línea impuesta fraudulentamente por el Laudo Arbitral de París de 1899, que pretende despojarnos de nuestra Guayana Esequiba?",
+      "¿Apoya usted el Acuerdo de Ginebra de 1966 como el único instrumento jurídico válido para alcanzar una solución práctica y satisfactoria para Venezuela y Guyana, en torno a la controversia sobre el territorio de la Guayana Esequiba?",
+      "¿Está usted de acuerdo con la posición histórica de Venezuela de no reconocer la Jurisdicción de la Corte Internacional de Justicia para resolver la controversia territorial sobre la Guayana Esequiba?",
+      "¿Está usted de acuerdo en oponerse, por todos los medios conforme a Derecho, a la pretensión de Guyana de disponer unilateralmente de un mar pendiente por delimitar, de manera ilegal y en violación del derecho internacional?",
+      "¿Está usted de acuerdo con la creación del estado Guayana Esequiba y se desarrolle un plan acelerado para la atención integral a la población actual y futura de ese territorio que incluya entre otros el otorgamiento de la ciudadanía y cédula de identidad venezolana, conforme al Acuerdo de Ginebra y el Derecho Internacional, incorporando en consecuencia dicho estado en el mapa del territorio venezolano?"
+    ];
+
+    var index = 0;
+
+    function mostrarPregunta() {
+      document.querySelector(".bienvenida").style.display = "none";
+      document.querySelector(".pregunta").style.display = "block";
+      document.getElementById("preguntaTitulo").innerText = `Pregunta ${index + 1}`;
+      document.getElementById("preguntaTexto").innerText = preguntas[index];
+    }
+
+    function guardarRespuesta(respuesta) {
+      respuestas.push(respuesta); // Agrega la respuesta al array
+      index++;
+      if (index < preguntas.length) {
+        mostrarPregunta(); // Muestra la siguiente pregunta
+      } else {
+        mostrarResultados(); // Muestra los resultados o realiza otra acción
+      }
+    }
+
+    function mostrarResultados() {
+  var resultadosHTML = "<h2 class='pregunta-titulo'>Verifique su selección y presione VOTAR</h2>";
+
+  for (var i = 0; i < respuestas.length; i++) {
+    var preguntaIndex = i + 1;
+    resultadosHTML += `<div class='pregunta-texto'>Selección ${preguntaIndex}ra Pregunta: 
+                        <button class='si' disabled>${respuestas[i]}</button></div>`;
+  }
+
+  resultadosHTML += '<button onclick="votar()" class="boton-votar">VOTAR</button>';
+  document.body.innerHTML = "<header><h1>REFERENDO CONSULTIVO 2023</h1></header><main class='resultados'>" + resultadosHTML + "</main>";
+}
+
+    function votar() {
+      document.body.innerHTML = "<header><h1>REFERENDO CONSULTIVO 2023</h1></header><main><h2>El voto se ha generado correctamente</h2><p>Tome su comprobante y deposítelo en la caja de resguardo.</p></main>";
+    }
+
+    function iniciarVotacion() {
+      mostrarPregunta();
+    }
+  </script>
 </body>
 </html>
