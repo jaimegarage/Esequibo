@@ -3,7 +3,142 @@
 <head>
   <meta charset="UTF-8">
   <title>Referendo Consultivo 2023</title>
-  <link rel="stylesheet" href="styles.css"> <!-- Enlaza tu archivo CSS -->
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  text-align: left;
+  background-color: #3498db;
+  padding: 20px;
+  color: white;
+}
+
+h1 {
+  font-size: 24px;
+}
+
+main {
+  text-align: center;
+  padding: 20px;
+}
+
+.bienvenida {
+  margin-bottom: 20px;
+}
+
+.caixa-gris {
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.pregunta-titulo {
+  font-size: 40px;
+  font-weight: bold;
+  background-color: rgb(255, 255, 255);
+  padding: 10px;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.pregunta-texto {
+  font-size: 20px;
+  margin-top: 40px;
+  margin-bottom: 60px;
+  margin-left: 200px;
+  margin-right: 200px;
+  text-align: center;
+  padding: 0px;
+  background-color: rgb(255, 255, 255);
+}
+
+.botones {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.comenzar {
+  font-size: 40px;
+  font-weight: bold;
+  padding: 20px 40px;
+  margin-bottom: 20px;
+}
+
+.si{
+  font-size: 40px;
+  font-weight: bold;
+  padding: 0px 100px;
+  margin: 40px;
+}
+
+
+.no {
+  font-size: 40px;
+  font-weight: bold;
+  padding: 0px 100px;
+  margin: 40px;
+}
+
+.boton-votar {
+  display: flex;
+  justify-content: center;
+  text-transform: uppercase;
+  font-size: 24px;
+  padding: 15px 30px;
+  border: 3px solid #000000;
+  border-radius: 5px;
+  display: block;
+  margin: 20px auto;
+  background-color: transparent;
+  color: #000000;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.resultados {
+  text-align: center;
+  margin-top: 10px; /* Reducir el margen superior */
+  padding: 0px;
+}
+
+
+.resultados .boton-votar {
+  display: block;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 22px;
+  padding: 15px 30px;
+  border-radius: 5px;
+  margin: 20px auto; /* Cambiado el margen para centrar vertical y horizontalmente */
+}
+
+.resultados .si {
+  background-color: #f1f1f1;
+  color: rgb(0, 0, 0);
+}
+
+.resultados .no {
+  background-color: #f1f1f1;
+  color: #000000;
+}
+
+.resultados .si:disabled,
+.resultados .no:disabled {
+  text-transform: uppercase;
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.resultados .pregunta-texto {
+  margin: 5px 0; /* Reducir el espacio vertical entre las selecciones de pregunta */
+}
+  </style>
 </head>
 <body>
   <header>
